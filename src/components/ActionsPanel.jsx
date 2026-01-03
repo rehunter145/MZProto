@@ -1,6 +1,17 @@
-import { Bell, Calendar, CheckCircle, AlertCircle } from 'lucide-react'
+import { Bell, Calendar, CheckCircle, AlertCircle, X } from 'lucide-react'
+import { useEffect } from 'react'
 
-function ActionsPanel() {
+function ActionsPanel({ isOpen, onClose }) {
+  // Close on escape key
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose()
+      }
+    }
+    document.addEventListener('keydown', handleEscape)
+    return () => document.removeEventListener('keydown', handleEscape)
+  }, [isOpen, onClose])
   const activities = [
     {
       id: 1,
@@ -32,34 +43,65 @@ function ActionsPanel() {
   ]
 
   return (
-    <aside className="w-80 bg-white dark:bg-gray-800 border-l border-gray-200 dark:border-gray-700 overflow-y-auto">
-      <div className="p-4">
-        <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">
-          Quick Actions
-        </h3>
-        <div className="space-y-2">
-          {quickActions.map((action) => {
-            const Icon = action.icon
-            return (
-              <button
-                key={action.id}
-                className="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-left bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-              >
-                <Icon className="w-4 h-4 text-gray-600 dark:text-gray-400" />
-                <span className="text-sm text-gray-700 dark:text-gray-300">
-                  {action.label}
-                </span>
-              </button>
-            )
-          })}
-        </div>
-      </div>
+    <>
+      {/* Overlay */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          onClick={onClose}
+          aria-hidden="true"
+        />
+      )}
 
-      <div className="border-t border-gray-200 dark:border-gray-700 p-4">
-        <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">
-          Recent Activity
-        </h3>
-        <div className="space-y-4">
+      {/* Drawer */}
+      <aside
+        className={`fixed md:relative right-0 top-0 h-full w-80 max-w-[85vw] bg-white dark:bg-gray-800
+                   border-l border-gray-200 dark:border-gray-700 overflow-y-auto z-50
+                   transform transition-transform duration-300 ease-in-out
+                   ${isOpen ? 'translate-x-0' : 'translate-x-full md:translate-x-0'}
+                   md:block`}
+      >
+        {/* Close button - only visible on mobile */}
+        <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 md:hidden">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+            Actions
+          </h2>
+          <button
+            onClick={onClose}
+            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            aria-label="Close actions panel"
+          >
+            <X className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+          </button>
+        </div>
+
+        <div className="p-4">
+          <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">
+            Quick Actions
+          </h3>
+          <div className="space-y-2">
+            {quickActions.map((action) => {
+              const Icon = action.icon
+              return (
+                <button
+                  key={action.id}
+                  className="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-left bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                >
+                  <Icon className="w-4 h-4 text-gray-600 dark:text-gray-400" />
+                  <span className="text-sm text-gray-700 dark:text-gray-300">
+                    {action.label}
+                  </span>
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
+        <div className="border-t border-gray-200 dark:border-gray-700 p-4">
+          <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">
+            Recent Activity
+          </h3>
+          <div className="space-y-4">
           {activities.map((activity) => (
             <div key={activity.id} className="flex items-start space-x-3">
               <div
@@ -94,9 +136,10 @@ function ActionsPanel() {
               </div>
             </div>
           ))}
+          </div>
         </div>
-      </div>
-    </aside>
+      </aside>
+    </>
   )
 }
 

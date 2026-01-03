@@ -60,16 +60,16 @@ function CountySearch() {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+      <div className="mb-6 md:mb-8">
+        <h2 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-2">
           County Real Estate Search
         </h2>
-        <p className="text-gray-600 dark:text-gray-400">
+        <p className="text-sm md:text-base text-gray-600 dark:text-gray-400">
           Enter a city name to open the county real estate property search website
         </p>
       </div>
 
-      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 mb-6">
+      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 md:p-6 mb-6">
         <div className="relative">
           <div className="flex gap-3">
             <div className="flex-1 relative">
@@ -90,11 +90,11 @@ function CountySearch() {
             </div>
             <button
               onClick={handleSearch}
-              className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg
-                       transition-colors flex items-center gap-2 font-medium"
+              className="px-4 md:px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg
+                       transition-colors flex items-center gap-2 font-medium shrink-0"
             >
               <Search className="w-5 h-5" />
-              Search
+              <span className="hidden sm:inline">Search</span>
             </button>
           </div>
 

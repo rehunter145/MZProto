@@ -11,10 +11,13 @@ function App() {
   })
 
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(() => {
+    // Default to collapsed on mobile (screen width < 768px)
+    const isMobile = window.innerWidth < 768
     const saved = localStorage.getItem('sidebarCollapsed')
-    return saved === 'true'
+    return saved !== null ? saved === 'true' : isMobile
   })
 
+  const [isActionsPanelOpen, setIsActionsPanelOpen] = useState(false)
   const [activeModule, setActiveModule] = useState('county-search')
 
   useEffect(() => {
@@ -35,9 +38,10 @@ function App() {
       <Header
         isDarkMode={isDarkMode}
         setIsDarkMode={setIsDarkMode}
+        onToggleActions={() => setIsActionsPanelOpen(!isActionsPanelOpen)}
       />
 
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 overflow-hidden relative">
         <Sidebar
           isCollapsed={isSidebarCollapsed}
           setIsCollapsed={setIsSidebarCollapsed}
@@ -47,7 +51,10 @@ function App() {
 
         <MainCanvas activeModule={activeModule} />
 
-        <ActionsPanel />
+        <ActionsPanel
+          isOpen={isActionsPanelOpen}
+          onClose={() => setIsActionsPanelOpen(false)}
+        />
       </div>
     </div>
   )

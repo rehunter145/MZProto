@@ -1,21 +1,28 @@
-import { Sun, Moon } from 'lucide-react'
+import { Sun, Moon, PanelRight } from 'lucide-react'
 import logo from '../assets/logo.png'
 
-function Header({ isDarkMode, setIsDarkMode }) {
+function Header({ isDarkMode, setIsDarkMode, onToggleActions }) {
   return (
-    <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-3 flex items-center justify-between">
+    <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 md:px-6 py-3 flex items-center justify-between">
       <div className="flex items-center space-x-3">
         <img
           src={logo}
           alt="MZProto Logo"
-          className="h-10 w-10 object-contain"
+          className="h-8 w-8 md:h-10 md:w-10 object-contain"
         />
-        <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
+        <h1 className="text-lg md:text-xl font-semibold text-gray-800 dark:text-white">
           MZProto
         </h1>
       </div>
 
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-2 md:space-x-4">
+        <button
+          onClick={onToggleActions}
+          className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+          aria-label="Toggle actions panel"
+        >
+          <PanelRight className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+        </button>
         <button
           onClick={() => setIsDarkMode(!isDarkMode)}
           className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
