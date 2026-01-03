@@ -1,6 +1,7 @@
 import { Play, Edit, Trash2, Plus } from 'lucide-react'
 import CountySearch from './CountySearch'
 import TurnoverBuilder from './TurnoverBuilder'
+import CMABuilder from './CMABuilder'
 
 function MainCanvas({ activeModule }) {
   const renderModule = () => {
@@ -9,6 +10,8 @@ function MainCanvas({ activeModule }) {
         return <CountySearch />
       case 'turnover-builder':
         return <TurnoverBuilder />
+      case 'rental-estimate':
+        return <CMABuilder />
       case 'scripts':
         return <ScriptManager />
       case 'automation':
