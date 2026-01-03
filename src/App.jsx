@@ -15,7 +15,7 @@ function App() {
     return saved === 'true'
   })
 
-  const [activeModule, setActiveModule] = useState('scripts')
+  const [activeModule, setActiveModule] = useState('county-search')
 
   useEffect(() => {
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light')

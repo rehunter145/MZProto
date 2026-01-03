@@ -3,7 +3,12 @@ import { Sun, Moon } from 'lucide-react'
 function Header({ isDarkMode, setIsDarkMode }) {
   return (
     <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-3 flex items-center justify-between">
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-3">
+        <img
+          src="/src/assets/logo.png"
+          alt="MZProto Logo"
+          className="h-10 w-10 object-contain"
+        />
         <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
           MZProto
         </h1>

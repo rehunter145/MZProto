@@ -1,6 +1,7 @@
-import { FileCode, Settings, Database, ChevronLeft, ChevronRight } from 'lucide-react'
+import { FileCode, Settings, Database, MapPin, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const menuItems = [
+  { id: 'county-search', label: 'County Search', icon: MapPin },
   { id: 'scripts', label: 'Script Manager', icon: FileCode },
   { id: 'automation', label: 'Automation', icon: Settings },
   { id: 'data', label: 'Data Hub', icon: Database },

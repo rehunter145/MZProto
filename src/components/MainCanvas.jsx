@@ -1,8 +1,11 @@
 import { Play, Edit, Trash2, Plus } from 'lucide-react'
+import CountySearch from './CountySearch'
 
 function MainCanvas({ activeModule }) {
   const renderModule = () => {
     switch (activeModule) {
+      case 'county-search':
+        return <CountySearch />
       case 'scripts':
         return <ScriptManager />
       case 'automation':
@@ -10,7 +13,7 @@ function MainCanvas({ activeModule }) {
       case 'data':
         return <DataHub />
       default:
-        return <ScriptManager />
+        return <CountySearch />
     }
   }
 
