@@ -1,11 +1,14 @@
 import { Play, Edit, Trash2, Plus } from 'lucide-react'
 import CountySearch from './CountySearch'
+import TurnoverBuilder from './TurnoverBuilder'
 
 function MainCanvas({ activeModule }) {
   const renderModule = () => {
     switch (activeModule) {
       case 'county-search':
         return <CountySearch />
+      case 'turnover-builder':
+        return <TurnoverBuilder />
       case 'scripts':
         return <ScriptManager />
       case 'automation':
