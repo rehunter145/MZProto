@@ -19,7 +19,7 @@ function PropertyInfoStep({ formData, updateFormData }: Props) {
           placeholder="1109 King Charles First"
           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg
                    bg-white dark:bg-gray-700 text-gray-900 dark:text-white
-                   focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   focus:outline-none focus:ring-2 focus:ring-orange-500"
         />
       </div>
 
@@ -34,7 +34,7 @@ function PropertyInfoStep({ formData, updateFormData }: Props) {
           placeholder="King Charles Property"
           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg
                    bg-white dark:bg-gray-700 text-gray-900 dark:text-white
-                   focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   focus:outline-none focus:ring-2 focus:ring-orange-500"
         />
       </div>
 
@@ -49,7 +49,7 @@ function PropertyInfoStep({ formData, updateFormData }: Props) {
             onChange={(e) => updateFormData({ estimatedTurnoverDays: parseInt(e.target.value) || 0 })}
             className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg
                      bg-white dark:bg-gray-700 text-gray-900 dark:text-white
-                     focus:outline-none focus:ring-2 focus:ring-blue-500"
+                     focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
         </div>
 
@@ -63,44 +63,13 @@ function PropertyInfoStep({ formData, updateFormData }: Props) {
             onChange={(e) => updateFormData({ leaseLength: parseInt(e.target.value) || 0 })}
             className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg
                      bg-white dark:bg-gray-700 text-gray-900 dark:text-white
-                     focus:outline-none focus:ring-2 focus:ring-blue-500"
+                     focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Last Turnover Date
-          </label>
-          <input
-            type="date"
-            value={formData.lastTurnoverDate}
-            onChange={(e) => updateFormData({ lastTurnoverDate: e.target.value })}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg
-                     bg-white dark:bg-gray-700 text-gray-900 dark:text-white
-                     focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Rent to SqFt Ratio
-          </label>
-          <input
-            type="number"
-            step="0.01"
-            value={formData.rentToSqftRatio}
-            onChange={(e) => updateFormData({ rentToSqftRatio: parseFloat(e.target.value) || 0 })}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg
-                     bg-white dark:bg-gray-700 text-gray-900 dark:text-white
-                     focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-      </div>
-
-      <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-        <p className="text-sm text-blue-900 dark:text-blue-200">
+      <div className="mt-6 p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
+        <p className="text-sm text-orange-900 dark:text-orange-200">
           <strong>Tip:</strong> Fill in all required fields (*) to ensure an accurate turnover report.
         </p>
       </div>

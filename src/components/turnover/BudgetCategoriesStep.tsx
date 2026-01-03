@@ -37,7 +37,7 @@ function BudgetCategoriesStep({ formData, updateFormData }: Props) {
                 onChange={(e) => updateCategory(category.key, parseFloat(e.target.value) || 0)}
                 className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg
                          bg-white dark:bg-gray-700 text-gray-900 dark:text-white
-                         focus:outline-none focus:ring-2 focus:ring-blue-500"
+                         focus:outline-none focus:ring-2 focus:ring-orange-500"
                 placeholder="0.00"
               />
             </div>
@@ -45,7 +45,7 @@ function BudgetCategoriesStep({ formData, updateFormData }: Props) {
         ))}
       </div>
 
-      <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-900/20 dark:to-green-900/20 rounded-lg border border-blue-200 dark:border-blue-700">
+      <div className="mt-8 p-6 bg-gradient-to-r from-orange-50 to-teal-50 dark:from-orange-900/20 dark:to-teal-900/20 rounded-lg border border-orange-200 dark:border-orange-700">
         <div className="flex items-center justify-between">
           <div>
             <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -56,7 +56,7 @@ function BudgetCategoriesStep({ formData, updateFormData }: Props) {
             </p>
           </div>
           <div className="text-right">
-            <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">
+            <p className="text-3xl font-bold text-orange-600 dark:text-orange-400">
               ${totalBudget.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </p>
           </div>

@@ -18,8 +18,8 @@ function PhotoLinksStep({ formData, updateFormData }: Props) {
 
   return (
     <div className="space-y-6">
-      <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg mb-6">
-        <p className="text-sm text-blue-900 dark:text-blue-200">
+      <div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg mb-6">
+        <p className="text-sm text-orange-900 dark:text-orange-200">
           Add links to inspection photos to help owners understand the turnover scope. Links will be included in the final report.
         </p>
       </div>
@@ -107,10 +107,10 @@ function PhotoLinksStep({ formData, updateFormData }: Props) {
       </div>
 
       {/* Move Out Inspection */}
-      <div className="p-6 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg border-2 border-green-200 dark:border-green-700">
+      <div className="p-6 bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20 rounded-lg border-2 border-teal-200 dark:border-teal-700">
         <div className="flex items-start gap-3 mb-4">
-          <div className="p-2 bg-green-100 dark:bg-green-900/50 rounded-lg">
-            <Camera className="w-6 h-6 text-green-600 dark:text-green-400" />
+          <div className="p-2 bg-teal-100 dark:bg-teal-900/50 rounded-lg">
+            <Camera className="w-6 h-6 text-teal-600 dark:text-teal-400" />
           </div>
           <div>
             <h4 className="text-md font-semibold text-gray-900 dark:text-white">
@@ -132,7 +132,7 @@ function PhotoLinksStep({ formData, updateFormData }: Props) {
             placeholder="https://www.dropbox.com/..."
             className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg
                      bg-white dark:bg-gray-800 text-gray-900 dark:text-white
-                     focus:outline-none focus:ring-2 focus:ring-green-500"
+                     focus:outline-none focus:ring-2 focus:ring-teal-500"
           />
         </div>
         {formData.photoLinks.moveOut && (
@@ -140,7 +140,7 @@ function PhotoLinksStep({ formData, updateFormData }: Props) {
             href={formData.photoLinks.moveOut}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block mt-2 text-sm text-green-600 dark:text-green-400 hover:underline font-medium"
+            className="inline-block mt-2 text-sm text-teal-600 dark:text-teal-400 hover:underline font-medium"
           >
             View Move-Out Photos →
           </a>
