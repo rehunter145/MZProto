@@ -1,15 +1,53 @@
 import { useState } from 'react'
-import { ExternalLink, X } from 'lucide-react'
+import { ExternalLink, X, Cloud } from 'lucide-react'
 
 function OperationsSchedule() {
   const [zoomedReport, setZoomedReport] = useState(null)
 
+  const cities = [
+    { name: 'Charlotte', url: 'https://weather.com/weather/tenday/l/Charlotte+NC' },
+    { name: 'Winston-Salem', url: 'https://weather.com/weather/tenday/l/Winston-Salem+NC' },
+    { name: 'Wilmington', url: 'https://weather.com/weather/tenday/l/Wilmington+NC' },
+    { name: 'Raleigh', url: 'https://weather.com/weather/tenday/l/Raleigh+NC' }
+  ]
+
   return (
     <div className="h-full overflow-y-auto bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto p-6">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
           Operations Schedule
         </h1>
+
+        {/* Weather Forecast Links */}
+        <div className="mb-6 bg-gradient-to-r from-teal-600 via-teal-700 to-cyan-700 rounded-lg shadow-lg p-6">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <Cloud className="w-6 h-6 text-white" />
+              <h2 className="text-lg font-semibold text-white">7-Day Weather Forecast</h2>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {cities.map((city) => (
+              <a
+                key={city.name}
+                href={city.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative bg-white/95 dark:bg-gray-800/95 hover:bg-white dark:hover:bg-gray-800 rounded-lg p-4 transition-all duration-200 hover:shadow-xl hover:scale-105"
+              >
+                <div className="flex flex-col items-center gap-2">
+                  <span className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
+                    {city.name}
+                  </span>
+                  <span className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                    North Carolina
+                  </span>
+                  <ExternalLink className="w-4 h-4 text-teal-600 dark:text-teal-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
 
         {/* Main Content - 60/40 Split */}
         <div className="flex flex-col lg:flex-row gap-6 mb-6">
