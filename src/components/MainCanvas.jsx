@@ -3,6 +3,7 @@ import CountySearch from './CountySearch'
 import TurnoverBuilder from './TurnoverBuilder'
 import CMABuilder from './CMABuilder'
 import OperationsSchedule from './OperationsSchedule'
+import AbsenceTracker from './AbsenceTracker'
 
 function MainCanvas({ activeModule }) {
   const renderModule = () => {
@@ -11,6 +12,8 @@ function MainCanvas({ activeModule }) {
         return <CountySearch />
       case 'operations-schedule':
         return <OperationsSchedule />
+      case 'absences':
+        return <AbsenceTracker />
       case 'turnover-builder':
         return <TurnoverBuilder />
       case 'rental-estimate':

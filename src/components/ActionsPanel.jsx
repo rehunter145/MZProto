@@ -49,6 +49,14 @@ function ActionsPanel({ isOpen, onClose, activeModule }) {
       ]
     }
 
+    if (activeModule === 'absences') {
+      return [
+        { id: 1, label: 'New Absence Request', icon: Calendar },
+        { id: 2, label: 'View Calendar', icon: CheckCircle },
+        { id: 3, label: 'Manage Holidays', icon: Bell },
+      ]
+    }
+
     // Default actions for other modules
     return [
       { id: 1, label: 'Run All Scripts', icon: CheckCircle },
