@@ -1,7 +1,7 @@
-import { Bell, Calendar, CheckCircle, AlertCircle, X } from 'lucide-react'
+import { Bell, Calendar, CheckCircle, AlertCircle, X, MapPin } from 'lucide-react'
 import { useEffect } from 'react'
 
-function ActionsPanel({ isOpen, onClose }) {
+function ActionsPanel({ isOpen, onClose, activeModule }) {
   // Close on escape key
   useEffect(() => {
     const handleEscape = (e) => {
@@ -36,11 +36,28 @@ function ActionsPanel({ isOpen, onClose }) {
     },
   ]
 
-  const quickActions = [
-    { id: 1, label: 'Run All Scripts', icon: CheckCircle },
-    { id: 2, label: 'Schedule Task', icon: Calendar },
-    { id: 3, label: 'View Notifications', icon: Bell },
-  ]
+  // Module-specific quick actions
+  const getQuickActions = () => {
+    if (activeModule === 'operations-schedule') {
+      return [
+        {
+          id: 1,
+          label: 'Route Builder',
+          icon: MapPin,
+          url: 'https://www.mapquest.com/routeplanner'
+        },
+      ]
+    }
+
+    // Default actions for other modules
+    return [
+      { id: 1, label: 'Run All Scripts', icon: CheckCircle },
+      { id: 2, label: 'Schedule Task', icon: Calendar },
+      { id: 3, label: 'View Notifications', icon: Bell },
+    ]
+  }
+
+  const quickActions = getQuickActions()
 
   return (
     <>
@@ -82,62 +99,96 @@ function ActionsPanel({ isOpen, onClose }) {
           <div className="space-y-2">
             {quickActions.map((action) => {
               const Icon = action.icon
+              const Component = action.url ? 'a' : 'button'
               return (
-                <button
+                <Component
                   key={action.id}
+                  href={action.url}
+                  target={action.url ? '_blank' : undefined}
+                  rel={action.url ? 'noopener noreferrer' : undefined}
                   className="w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-left bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                 >
                   <Icon className="w-4 h-4 text-gray-600 dark:text-gray-400" />
                   <span className="text-sm text-gray-700 dark:text-gray-300">
                     {action.label}
                   </span>
-                </button>
+                </Component>
               )
             })}
           </div>
         </div>
 
-        <div className="border-t border-gray-200 dark:border-gray-700 p-4">
-          <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">
-            Recent Activity
-          </h3>
-          <div className="space-y-4">
-          {activities.map((activity) => (
-            <div key={activity.id} className="flex items-start space-x-3">
-              <div
-                className={`mt-0.5 p-1 rounded-full ${
-                  activity.type === 'success'
-                    ? 'bg-green-100 dark:bg-green-900/30'
-                    : activity.type === 'info'
-                    ? 'bg-blue-100 dark:bg-blue-900/30'
-                    : 'bg-yellow-100 dark:bg-yellow-900/30'
-                }`}
+        {/* Route Builder for Operations Schedule */}
+        {activeModule === 'operations-schedule' && (
+          <div className="border-t border-gray-200 dark:border-gray-700 p-4">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
+                Route Builder
+              </h3>
+              <a
+                href="https://www.mapquest.com/routeplanner/copy-paste"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-orange-600 hover:text-orange-700 dark:text-orange-400 dark:hover:text-orange-300 transition-colors"
+                title="Open in new tab"
               >
-                {activity.type === 'success' && (
-                  <CheckCircle className="w-3 h-3 text-green-600 dark:text-green-400" />
-                )}
-                {activity.type === 'info' && (
-                  <Calendar className="w-3 h-3 text-blue-600 dark:text-blue-400" />
-                )}
-                {activity.type === 'warning' && (
-                  <AlertCircle className="w-3 h-3 text-yellow-600 dark:text-yellow-400" />
-                )}
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 dark:text-white">
-                  {activity.title}
-                </p>
-                <p className="text-xs text-gray-600 dark:text-gray-400 mt-0.5">
-                  {activity.description}
-                </p>
-                <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-                  {activity.time}
-                </p>
-              </div>
+                <MapPin className="w-4 h-4" />
+              </a>
             </div>
-          ))}
+            <iframe
+              src="https://www.mapquest.com/routeplanner/copy-paste"
+              width="100%"
+              height="1200"
+              frameBorder="0"
+              className="w-full rounded border border-gray-200 dark:border-gray-600"
+              title="MapQuest Route Builder"
+            />
           </div>
-        </div>
+        )}
+
+        {activeModule !== 'operations-schedule' && (
+          <div className="border-t border-gray-200 dark:border-gray-700 p-4">
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">
+              Recent Activity
+            </h3>
+            <div className="space-y-4">
+            {activities.map((activity) => (
+              <div key={activity.id} className="flex items-start space-x-3">
+                <div
+                  className={`mt-0.5 p-1 rounded-full ${
+                    activity.type === 'success'
+                      ? 'bg-green-100 dark:bg-green-900/30'
+                      : activity.type === 'info'
+                      ? 'bg-blue-100 dark:bg-blue-900/30'
+                      : 'bg-yellow-100 dark:bg-yellow-900/30'
+                  }`}
+                >
+                  {activity.type === 'success' && (
+                    <CheckCircle className="w-3 h-3 text-green-600 dark:text-green-400" />
+                  )}
+                  {activity.type === 'info' && (
+                    <Calendar className="w-3 h-3 text-blue-600 dark:text-blue-400" />
+                  )}
+                  {activity.type === 'warning' && (
+                    <AlertCircle className="w-3 h-3 text-yellow-600 dark:text-yellow-400" />
+                  )}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-gray-900 dark:text-white">
+                    {activity.title}
+                  </p>
+                  <p className="text-xs text-gray-600 dark:text-gray-400 mt-0.5">
+                    {activity.description}
+                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                    {activity.time}
+                  </p>
+                </div>
+              </div>
+            ))}
+            </div>
+          </div>
+        )}
       </aside>
     </>
   )

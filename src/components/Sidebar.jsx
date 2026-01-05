@@ -1,7 +1,8 @@
-import { FileCode, Settings, Database, MapPin, ClipboardList, ChevronLeft, ChevronRight, TrendingUp } from 'lucide-react'
+import { FileCode, Settings, Database, MapPin, ClipboardList, ChevronLeft, ChevronRight, TrendingUp, Calendar } from 'lucide-react'
 
 const menuItems = [
   { id: 'county-search', label: 'County Search', icon: MapPin },
+  { id: 'operations-schedule', label: 'Operations Schedule', icon: Calendar },
   { id: 'turnover-builder', label: 'Turnover Builder', icon: ClipboardList },
   { id: 'rental-estimate', label: 'Rental Estimate', icon: TrendingUp },
   { id: 'scripts', label: 'Script Manager', icon: FileCode },

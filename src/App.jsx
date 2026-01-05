@@ -54,6 +54,7 @@ function App() {
         <ActionsPanel
           isOpen={isActionsPanelOpen}
           onClose={() => setIsActionsPanelOpen(false)}
+          activeModule={activeModule}
         />
       </div>
     </div>

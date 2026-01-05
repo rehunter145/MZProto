@@ -2,12 +2,15 @@ import { Play, Edit, Trash2, Plus } from 'lucide-react'
 import CountySearch from './CountySearch'
 import TurnoverBuilder from './TurnoverBuilder'
 import CMABuilder from './CMABuilder'
+import OperationsSchedule from './OperationsSchedule'
 
 function MainCanvas({ activeModule }) {
   const renderModule = () => {
     switch (activeModule) {
       case 'county-search':
         return <CountySearch />
+      case 'operations-schedule':
+        return <OperationsSchedule />
       case 'turnover-builder':
         return <TurnoverBuilder />
       case 'rental-estimate':
