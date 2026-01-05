@@ -23,17 +23,17 @@ function AbsenceTracker() {
   ]
 
   const employees = [
-    { id: '1', name: 'Alisha Robbins', initials: 'AR', vacationLeft: 18.5, lastUpdated: '01/01/2027' },
-    { id: '2', name: 'Ashlee Malone', initials: 'AM', vacationLeft: 18, lastUpdated: '01/01/2027' },
-    { id: '3', name: 'June Harris', initials: 'JH', vacationLeft: 18, lastUpdated: '01/01/2027' },
-    { id: '4', name: 'Amber Reavis', initials: 'AR', vacationLeft: 16, lastUpdated: '01/01/2027' },
-    { id: '5', name: 'Catherine Pitney', initials: 'CP', vacationLeft: 15.5, lastUpdated: '01/01/2027' },
-    { id: '6', name: 'Sasha McDonald', initials: 'SM', vacationLeft: 14, lastUpdated: '01/01/2027' },
-    { id: '7', name: 'Lisa Scott', initials: 'LS', vacationLeft: 14, lastUpdated: '01/01/2027' },
-    { id: '8', name: 'Will Hall', initials: 'WH', vacationLeft: 14, lastUpdated: '01/01/2027' },
-    { id: '9', name: 'RE Hunter', initials: 'RH', vacationLeft: 14, lastUpdated: '01/01/2027' },
-    { id: '10', name: 'Hayli Mace', initials: 'HM', vacationLeft: 13.5, lastUpdated: '01/01/2027' },
-    { id: '11', name: 'Jacob Baptista', initials: 'JB', vacationLeft: 13.5, lastUpdated: '01/01/2027' },
+    { id: '1', name: 'Alisha Robbins', initials: 'AR', vacationLeft: 5, lastUpdated: '01/01/2027' },
+    { id: '2', name: 'Ashlee Malone', initials: 'AM', vacationLeft: 5, lastUpdated: '01/01/2027' },
+    { id: '3', name: 'June Harris', initials: 'JH', vacationLeft: 5, lastUpdated: '01/01/2027' },
+    { id: '4', name: 'Amber Reavis', initials: 'AR', vacationLeft: 5, lastUpdated: '01/01/2027' },
+    { id: '5', name: 'Catherine Pitney', initials: 'CP', vacationLeft: 5, lastUpdated: '01/01/2027' },
+    { id: '6', name: 'Sasha McDonald', initials: 'SM', vacationLeft: 5, lastUpdated: '01/01/2027' },
+    { id: '7', name: 'Lisa Scott', initials: 'LS', vacationLeft: 5, lastUpdated: '01/01/2027' },
+    { id: '8', name: 'Will Hall', initials: 'WH', vacationLeft: 5, lastUpdated: '01/01/2027' },
+    { id: '9', name: 'RE Hunter', initials: 'RH', vacationLeft: 5, lastUpdated: '01/01/2027' },
+    { id: '10', name: 'Hayli Mace', initials: 'HM', vacationLeft: 5, lastUpdated: '01/01/2027' },
+    { id: '11', name: 'Jacob Baptista', initials: 'JB', vacationLeft: 5, lastUpdated: '01/01/2027' },
   ]
 
   const deleteRequests = []
